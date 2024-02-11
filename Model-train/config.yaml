@@ -1,0 +1,7 @@
+# this is a default config file for yolo training remember to change the paths
+path: C:\Users\taifa\Documents\VisionBlackOutM1\ssl
+train: C:\Users\taifa\Documents\VisionBlackOutM1\ssl\images
+val: C:\Users\taifa\Documents\VisionBlackOutM1\ssl\images
+
+names:
+  0: Ball
