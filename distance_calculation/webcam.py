@@ -4,6 +4,7 @@ import cv2
 
 model = YOLO("runs/detect/train3/weights/best.pt", verbose=False)
 
+
 # Open the video file
 cap = cv2.VideoCapture(0)
 
