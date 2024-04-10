@@ -21,8 +21,6 @@ pygame.display.set_caption("BALLS POSITION")
 
 
 model = YOLO("runs/detect/train3/weights/best.pt", verbose=False)
-
-
 # Define the colors
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
