@@ -38,7 +38,7 @@ class Ball:
 
     def draw(self, window):
         pygame.draw.circle(window, self.color,
-                           self.getMiddle(), self.radius, 40)
+                           self.getMiddle(), self.radius)
 
 
 def do_simulation():
@@ -48,19 +48,26 @@ def do_simulation():
     font = pygame.font.Font(None, 32)
     goal_txt = font.render("Possible Goal", True, (255, 255, 255))
     fail_txt = font.render("No possible goal", True, (255, 255, 255))
+    size_txt = font.render("No possible goal", True, (255, 255, 255))
+    
+    
 
     # Set up the window
     window_width = 800
     window_height = 600
-
-    ball_size = 30
+    goal_size = randint(100, 700)
+    ball_size = goal_size//10
+    estimated_distance = 400/goal_size * 30
+    ball_txt = font.render("ball size  = " + str(ball_size), True, (255, 255, 255))
+    distance_txt = font.render("estimated distance (cm) = " + str(int(estimated_distance)), True, (255, 255, 255))
+    
 
     window = pygame.display.set_mode((window_width, window_height))
     pygame.display.set_caption("Pygame Scene")
 
     # Set up the rectangle
     goal = Rect((window_width - 400) // 2,
-                (window_height - 100) // 2, randint(100, 700), 100, (0, 255, 0))
+                (window_height - 100) // 2, goal_size, 100, (0, 255, 0))
 
     blocker = Rect((window_width - randint(0, 600)) //
                    2, (window_height - goal.height) // 2, randint(20, 400), 100, (255, 0, 0))
@@ -119,8 +126,19 @@ def do_simulation():
         pygame.draw.line(window, (255, 255, 255),
                          (window_width//2, window_height - 100), target_area)
         window.blit(goal_txt, (window_width//2, window_height-50))
+        size_txt = font.render("biggest gap width = " + str(target.width), True, (255, 255, 255))
+        window.blit(size_txt, (window_width//2, window_height-80))
+        window.blit(ball_txt, (window_width//2, window_height-100))
+        window.blit(distance_txt, (window_width//2, window_height-140))
+        
+        
+        
+        
+        
+        
+        
     else:
-        window.blit(goal_txt, (window_width//2, window_height-50))
+        window.blit(fail_txt, (window_width//2, window_height-50))
 
     pygame.display.flip()
     # Quit Pygame
