@@ -20,8 +20,8 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("BALLS POSITION")
 
 
-model = YOLO("runs/detect/train3/weights/best.pt", verbose=False)
-# Define the colors
+model = YOLO(r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\distance_calculation\best.pt",
+             verbose=False)  # Define the colors
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)

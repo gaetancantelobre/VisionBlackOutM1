@@ -1,9 +1,13 @@
 from ultralytics import YOLO
 from ultralytics.models.yolo.detect.predict import DetectionPredictor
 import cv2
+import os
 
-model = YOLO("runs/detect/train3/weights/best.pt", verbose=False)
 
+print(os.getcwd())
+
+model = YOLO(
+    r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\distance_calculation\best.pt", verbose=False)
 
 # Open the video file
 cap = cv2.VideoCapture(0)
