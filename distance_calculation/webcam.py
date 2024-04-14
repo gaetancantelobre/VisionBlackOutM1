@@ -7,7 +7,7 @@ import os
 print(os.getcwd())
 
 model = YOLO(
-    r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\distance_calculation\best.pt", verbose=False)
+    r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\newest_trining\detect\train3\weights\best.pt", verbose=False)
 
 # Open the video file
 cap = cv2.VideoCapture(0)
@@ -42,7 +42,7 @@ while cap.isOpened():
             detected_class = cls
             name = names[int(cls)]
             # Display the annotated frame
-            cv2.imshow("YOLOv8 Inference", annotated_frame)
+        cv2.imshow("YOLOv8 Inference", annotated_frame)
 
         # Break the loop if 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord("q"):
