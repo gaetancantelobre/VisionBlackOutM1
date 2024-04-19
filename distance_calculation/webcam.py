@@ -5,12 +5,15 @@ import os
 
 
 print(os.getcwd())
+# on linux excute this in console : export QT_QPA_PLATFORM=xcb
+#path_to_weights = r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\newest_trining\detect\train3\weights\best.pt" # if on windows
+path_to_weights = r"/home/twim/Documents/GitHub/VisionBlackOutM1/newest_trining/detect/train3/weights/best.pt"
 
 model = YOLO(
-    r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\newest_trining\detect\train3\weights\best.pt", verbose=False)
+    path_to_weights, verbose=False)
 
 # Open the video file
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(2)
 
 # Loop through the video frames
 while cap.isOpened():

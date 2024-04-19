@@ -32,10 +32,13 @@ def get_ball_angle(ball_position, image_width, fov_degrees):
 
 
 ball_found = False
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(2)
 
-model = YOLO(
-    r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\distance_calculation\best.pt", verbose=False)
+path_to_weights = r"/home/twim/Documents/GitHub/VisionBlackOutM1/distance_calculation/best.pt"
+#path_to_weights = r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\distance_calculation\best.pt"
+
+model = YOLO(path_to_weights
+    , verbose=False)
 
 # Open the video file
 ball_touched = False
@@ -85,8 +88,8 @@ with rsk.Client(host='127.0.0.1', key='') as client:
                 robot.control(0., 0., math.radians(20))
             else:
                 pos = x1 + (width//2)
-                ball_angle_deg = get_ball_angle(pos, 640, 45)
-                ball_angle = math.radians(round((ball_angle_deg*-1), 1))
+                ball_angle_deg = get_ball_angle(pos, 640, 40)
+                ball_angle = math.radians(round((ball_angle_deg*-1), 1))*1.4
                 print("rad = " + str(ball_angle))
                 print("deg = " + str(ball_angle_deg))
                 mov_vector = (0.05, ball_angle)
@@ -96,8 +99,8 @@ with rsk.Client(host='127.0.0.1', key='') as client:
 
                 else:
                     print("god it")
-                    robot.control(0.05, 0, 0)
-                    time.sleep(1.5)
+                    robot.control(5, 0, 0)
+                    time.sleep(.5)
                     ball_touched = 1
                     robot_stop(robot)
                     robot.kick()
