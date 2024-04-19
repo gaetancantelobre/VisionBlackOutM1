@@ -12,7 +12,7 @@ def robot_stop(robot):
 
 def shoot(robot):
     print("god it")
-    robot.control(5, 0, 0)
+    robot.control(10, 0, 0)
     time.sleep(1)
     robot_stop(robot)
     robot.kick()
