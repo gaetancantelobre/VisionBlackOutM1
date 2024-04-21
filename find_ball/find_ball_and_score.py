@@ -18,11 +18,11 @@ ball_detected = False
 goal_is_centred = False
 orbit_direction = 1
 
-# CAMERA_SOURCE = 0 #FOR WINDOWS
-CAMERA_SOURCE = 2  # FOR LINUX
+CAMERA_SOURCE = 0  # FOR WINDOWS
+# CAMERA_SOURCE = 2  # FOR LINUX
 
-path_to_weights = r"/home/twim/Documents/GitHub/VisionBlackOutM1/newest_trining/detect/train3/weights/best.pt"
-# path_to_weights = r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\distance_calculation\best.pt"
+# path_to_weights = r"/home/twim/Documents/GitHub/VisionBlackOutM1/newest_trining/detect/train3/weights/best.pt"
+path_to_weights = r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\find_ball\last.pt"
 
 model = YOLO(path_to_weights, verbose=False)
 

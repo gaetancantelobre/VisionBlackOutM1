@@ -6,14 +6,15 @@ import os
 
 print(os.getcwd())
 # on linux excute this in console : export QT_QPA_PLATFORM=xcb
-#path_to_weights = r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\newest_trining\detect\train3\weights\best.pt" # if on windows
-path_to_weights = r"/home/twim/Documents/GitHub/VisionBlackOutM1/newest_trining/detect/train3/weights/best.pt"
+
+# path_to_weights = r"/home/twim/Documents/GitHub/VisionBlackOutM1/newest_trining/detect/train3/weights/best.pt"
+path_to_weights = r"C:\Users\twim\Documents\GitHub\VisionBlackOutM1\find_ball\last.pt"
 
 model = YOLO(
     path_to_weights, verbose=False)
 
 # Open the video file
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(0)
 
 # Loop through the video frames
 while cap.isOpened():

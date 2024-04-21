@@ -4,7 +4,6 @@ import time
 
 
 class Rect:
-
     def __init__(self, x, y, width, height, color):
         self.x = x
         self.y = y
@@ -49,8 +48,6 @@ def do_simulation():
     goal_txt = font.render("Possible Goal", True, (255, 255, 255))
     fail_txt = font.render("No possible goal", True, (255, 255, 255))
     size_txt = font.render("No possible goal", True, (255, 255, 255))
-    
-    
 
     # Set up the window
     window_width = 800
@@ -58,9 +55,10 @@ def do_simulation():
     goal_size = randint(100, 700)
     ball_size = goal_size//10
     estimated_distance = 400/goal_size * 30
-    ball_txt = font.render("ball size  = " + str(ball_size), True, (255, 255, 255))
-    distance_txt = font.render("estimated distance (cm) = " + str(int(estimated_distance)), True, (255, 255, 255))
-    
+    ball_txt = font.render(
+        "ball size  = " + str(ball_size), True, (255, 255, 255))
+    distance_txt = font.render(
+        "estimated distance (cm) = " + str(int(estimated_distance)), True, (255, 255, 255))
 
     window = pygame.display.set_mode((window_width, window_height))
     pygame.display.set_caption("Pygame Scene")
@@ -126,17 +124,12 @@ def do_simulation():
         pygame.draw.line(window, (255, 255, 255),
                          (window_width//2, window_height - 100), target_area)
         window.blit(goal_txt, (window_width//2, window_height-50))
-        size_txt = font.render("biggest gap width = " + str(target.width), True, (255, 255, 255))
+        size_txt = font.render("biggest gap width = " +
+                               str(target.width), True, (255, 255, 255))
         window.blit(size_txt, (window_width//2, window_height-80))
         window.blit(ball_txt, (window_width//2, window_height-100))
         window.blit(distance_txt, (window_width//2, window_height-140))
-        
-        
-        
-        
-        
-        
-        
+
     else:
         window.blit(fail_txt, (window_width//2, window_height-50))
 
