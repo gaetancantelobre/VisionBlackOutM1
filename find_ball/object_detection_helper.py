@@ -1,9 +1,12 @@
+from vector_calculation import get_ball_angle
 
 
 class Detected_Object:
     BALL = 0.0
     ROBOT = 1.0
     GOAL = 2.0
+    CAMERA_FOV = 40
+    CAMERA_RES = 640
 
     def __init__(self, cls, bounding_box) -> None:
         self.x1, self.y1, self.x2, self.y2 = bounding_box
@@ -29,3 +32,9 @@ class Detected_Object:
 
     def get_estimated_distance(self) -> float:
         return self.ref_size/(self.get_width()*self.ref_distance)
+
+    def get_angle_deg(self) -> float:
+        return get_ball_angle(self.get_center(), self.CAMERA_RES, self.CAMERA_FOV)
+
+    def get_info(self):
+        return "This object is a " + self.class_name + ".\n" + "It is at a distance of : " + str(self.get_estimated_distance()) + " cm."

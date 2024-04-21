@@ -14,8 +14,8 @@ def get_direction_vector(ball_position, image_width, fov_degrees, distance):
     return direction_vector
 
 
-def get_ball_angle(ball_position, image_width, fov_degrees):
+def get_object_angle(object_position, image_width, fov_degrees):
     # Calculate the angle of the ball relative to the center of the image
-    angle_degrees = ((ball_position - image_width / 2) /
+    angle_degrees = ((object_position - image_width / 2) /
                      (image_width / 2)) * (fov_degrees / 2)
     return angle_degrees
