@@ -100,3 +100,16 @@ be sure to have everything installed before running the code.
 and to change the paths in the code to match your own paths as well as the camera you are using.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- FEATURES -->
+## Features
+
+- Detect robots
+- Detect ball
+- Detect field goals
+- ball shooting
+- goal shooting
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
