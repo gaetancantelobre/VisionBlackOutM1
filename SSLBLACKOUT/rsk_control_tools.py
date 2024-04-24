@@ -143,7 +143,8 @@ class Robot_controller:
             self.STATUS = 1
             
      
-    def find_ball_and_score(self):
+    def find_ball_and_score(self,obj_list):
+        self.OBJECT_LIST = obj_list
         if(self.get_status ==2 and cpt == 1):
             self.reset_all()
             return 1

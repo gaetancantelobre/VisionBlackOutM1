@@ -100,7 +100,7 @@ with rsk.Client(host='127.0.0.1', key='') as client:
                 quit()
             elif (not goal_is_centered and ball_approched):
                 # if the goal isnt centered we start orbiting until the goal is centered.
-                
+                robot_green1.set_control_vector_deg((0, CORRECTION_SPEED, math.radians(20)))
             # Break the loop if 'q' is pressed
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
