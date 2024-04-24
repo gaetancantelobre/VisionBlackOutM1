@@ -23,7 +23,7 @@ with rsk.Client(host='127.0.0.1', key='') as client:
     robot_green1 = Robot_controller(robot)
     # Loop through the video frames
     working = 1
-    while working:
+    while working: #while the robot hasent completed the task keep running
         # Read a frame from the video
         success, frame = cap.read()
         object_list = []
@@ -36,7 +36,7 @@ with rsk.Client(host='127.0.0.1', key='') as client:
             # Iterate through the results
             for box, cls in zip(boxes, classes):
                     object_list.append(Detected_Object(cls, box))
-        if(robot_green1.find_ball_and_score(object_list)):
+        if(robot_green1.find_ball_and_score(object_list)): #if 1 is return that means the robot has completed its taskand exit the while loop.
             working = 0
             
     print("Goal scored !!!! ")
