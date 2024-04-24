@@ -1,5 +1,4 @@
-from vector_calculation import get_object_angle
-
+from SSLBLACKOUT.vector_calculation import get_object_angle
 
 class Detected_Object:
     BALL = 0.0

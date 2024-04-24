@@ -2,11 +2,9 @@ from ultralytics import YOLO
 from ultralytics.models.yolo.detect.predict import DetectionPredictor
 import cv2
 
-
-from vector_calculation import get_object_angle
-from rsk_control_tools import robot_stop, shoot
-from object_detection_helper import Detected_Object
-
+from SSLBLACKOUT.vector_calculation import get_object_angle 
+from SSLBLACKOUT.rsk_control_tools import Robot_controller
+from SSLBLACKOUT.object_detection_helper import Detected_Object
 
 from time import sleep
 import rsk
@@ -36,7 +34,7 @@ NO_VISIBLITY_LIMIT_DISTANCE = 15
 ball_approched = False
 with rsk.Client(host='127.0.0.1', key='') as client:
     robot = client.robots['green'][1]
-    robot_stop(robot)
+    robot_green1 = Robot_controller(robot)
     # Loop through the video frames
     while not ball_approched or not goal_is_centered:
         # Reset ball_detected to False every iteration to allow live updating if balls leaves the frame.
@@ -72,7 +70,8 @@ with rsk.Client(host='127.0.0.1', key='') as client:
 
             if (not ball_detected):
                 # if a ball isnt detected then we spin on the spot
-                robot.control(0., 0, math.radians(30)*-1)
+                robot_green1.set_control_vector_deg((0., 0, math.radians(30)*-1))
+                robot_green1.move()
             elif (ball_detected and not ball_approched):
                 # if we detect a ball but we havent moved to it
                 # we calculate the angle towards the ball from center of the camera
@@ -83,25 +82,25 @@ with rsk.Client(host='127.0.0.1', key='') as client:
                 # since the camera is higher up than the floor the fov makes it so that when the ball is very close the camera does not see it
                 # we get as close as possible
                 if (ball.get_estimated_distance() > NO_VISIBLITY_LIMIT_DISTANCE):
-                    robot.control(mov_vector[0], mov_vector[1], mov_vector[2])
+                    robot_green1.set_control_vector_deg(mov_vector)
+                    robot_green1.move()
                 else:
                     # when we are close to the ball we stop the robot.
                     ball_approched = 1
-                    robot_stop(robot)
+                    robot_green1.stop()
 
             elif (goal_is_centered and ball_approched):
                 # if we are near the ball and lined up with the goal we can shoot the ball and score
                 # here we stop and sleep the robot as while orbiting we get a lot of momentum, so if we dont stop and wait the robot tends to shoot to the sides
-                robot_stop(robot)
+                robot_green1.stop()
                 sleep(1)
-                shoot(robot)
+                robot_green1.shoot()
                 # here we stop the robot before ending the program as the robot keeps the same velocity settings even when communication is cut.
                 # if the velocity vector is set to (1,1,1) it will continue to spin ; so we set it to (0,0,0)
-                robot_stop(robot)
                 quit()
             elif (not goal_is_centered and ball_approched):
                 # if the goal isnt centered we start orbiting until the goal is centered.
-                robot.control(0, CORRECTION_SPEED, math.radians(20))
+                
             # Break the loop if 'q' is pressed
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
