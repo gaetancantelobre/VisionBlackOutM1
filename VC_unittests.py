@@ -1,6 +1,6 @@
 import unittest
 import random
-from vector_calculation import get_object_angle
+from  SSLBLACKOUT.vector_calculation import get_object_angle
 
 class TestVectorCalculation(unittest.TestCase):
     def test_get_object_angle(self):
