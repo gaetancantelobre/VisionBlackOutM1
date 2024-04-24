@@ -1,4 +1,4 @@
-from vector_calculation import get_object_angle
+
 
 
 class Detected_Object:
@@ -31,6 +31,24 @@ class Detected_Object:
             if (width_w < width_h):
                 width_w = width_h
         return width_w
+    
+    
+        
+    def get_angle_deg(self) -> float:
+        object_position = self.get_center()
+        image_width = self.get_width()
+        fov_degrees = self.CAMERA_FOV
+        if(object_position < 0 or object_position >= image_width ):
+            raise ValueError("object position is out of bounds of cam resolution.")
+        if(fov_degrees > 360 or fov_degrees <= 0):
+            raise ValueError("camera FOV is too low or too high.")
+        if(image_width <= 0):
+            raise ValueError("image_width_is_too_low")
+            
+        # Calculate the angle of the ball relative to the center of the image
+        angle_degrees = ((object_position - image_width / 2) /
+                        (image_width / 2)) * (fov_degrees / 2)
+        return angle_degrees
 
     def get_height(self) -> int:
         return self.y2 - self.y1
@@ -41,8 +59,6 @@ class Detected_Object:
     def get_estimated_distance(self) -> float:
         return (self.ref_size/self.get_width())*self.ref_distance
 
-    def get_angle_deg(self) -> float:
-        return get_object_angle(self.get_center(), self.CAMERA_RES, self.CAMERA_FOV)
 
     def get_info(self):
         return "This object is a " + self.class_name + ".\n" + "It is at a distance of : " + str(self.get_estimated_distance()) + " cm."

@@ -1,9 +1,8 @@
 from rsk import control
 from time import sleep
-from object_detection_helper import Detected_Object
 from math import radians
 
-from vector_calculation import *
+from .vector_calculation import *
 
 
 class Robot_controller:

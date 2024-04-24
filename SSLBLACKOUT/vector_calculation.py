@@ -1,5 +1,5 @@
 from math import radians, sin, cos
-from object_detection_helper import Detected_Object
+
 
 def get_direction_vector(ball_position, image_width, fov_degrees, distance):
     # Calculate the angle of the ball relative to the center of the image
@@ -46,21 +46,6 @@ def get_speed_from_distance(estimated_distance):
     return speed
 
         
-    
-def get_angle_from_detected_object(detected : Detected_Object):
-    object_position = detected.get_center()
-    image_width = detected.get_width()
-    fov_degrees = detected.CAMERA_FOV
-    if(object_position < 0 or object_position >= image_width ):
-        raise ValueError("object position is out of bounds of cam resolution.")
-    if(fov_degrees > 360 or fov_degrees <= 0):
-        raise ValueError("camera FOV is too low or too high.")
-    if(image_width <= 0):
-        raise ValueError("image_width_is_too_low")
-        
-    # Calculate the angle of the ball relative to the center of the image
-    angle_degrees = ((object_position - image_width / 2) /
-                     (image_width / 2)) * (fov_degrees / 2)
-    return angle_degrees
+
     
     
