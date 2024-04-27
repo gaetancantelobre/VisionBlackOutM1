@@ -42,7 +42,8 @@ def get_object_angle(object_position, image_width, fov_degrees):
     """
     # Check if the object position is within the image bounds
     if object_position < 0 or object_position >= image_width:
-        raise ValueError("Object position is out of bounds of the camera resolution.")
+        raise ValueError(
+            "Object position is out of bounds of the camera resolution.")
 
     # Check if the FOV is within a valid range
     if fov_degrees > 360 or fov_degrees <= 0:
@@ -58,7 +59,7 @@ def get_object_angle(object_position, image_width, fov_degrees):
     return angle_degrees
 
 
-def get_speed_from_distance(estimated_distance):
+def get_speed_from_distance(estimated_distance, max_speed):
     """
     Calculates the speed based on the estimated distance.
 
@@ -72,7 +73,7 @@ def get_speed_from_distance(estimated_distance):
     if estimated_distance < 0:
         raise ValueError("Estimated distance is not a valid distance.")
 
-    MAX_SPEED = 3.0
+    MAX_SPEED = max_speed
     MIN_SPEED = 0.05
     REF_DISTANCE = 150.0
 
@@ -87,8 +88,3 @@ def get_speed_from_distance(estimated_distance):
         speed = MIN_SPEED
 
     return speed
-
-        
-
-    
-    
