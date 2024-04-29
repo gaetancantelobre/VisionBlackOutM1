@@ -23,8 +23,6 @@
   </p>
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -43,8 +41,6 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -57,12 +53,7 @@ The project is divided into two parts: the vision part and the strategy part. Th
 
 This project is still in early stages of development.
 
-
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -72,31 +63,36 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 1. Python
+
    ```sh
    sudo apt-get install python3
    ```
+
 2. Yolo
-   ```sh 
+
+   ```sh
     # Install the ultralytics package from PyPI
     pip install ultralytics
     ```
+
 3. OpenCV
+
    ```sh
    pip install opencv-python
    ```
+
 4. [RSK](https://robot-soccer-kit.github.io/documentation)
 
 5. A camera
 
-
 ### Installation
+
 All the code is in the VisionBlackOutM1 folder. You can clone the repository and run the code from there.
 
 be sure to have everything installed before running the code.
 and to change the paths in the code to match your own paths as well as the camera you are using.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- FEATURES -->
 ## Features
@@ -108,4 +104,3 @@ and to change the paths in the code to match your own paths as well as the camer
 - goal shooting
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
